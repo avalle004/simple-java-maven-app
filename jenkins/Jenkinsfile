@@ -2,9 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-           container ('maven'){
+          steps {
+                container ('maven'){
                   sh 'mvn version'
                 }
+            }
         }
         stage('Test') {
             steps {
