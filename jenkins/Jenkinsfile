@@ -2,9 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
+           container ('maven'){
+                  sh 'mvn version'
+                }
         }
         stage('Test') {
             steps {
