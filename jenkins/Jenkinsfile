@@ -1,9 +1,14 @@
 pipeline {
     agent any
-
-     stages {
-       
-      stage('Test') {
+    stages {
+        stage('Build') {
+          steps {
+                container ('maven'){
+                  sh 'mvn version'
+                }
+            }
+        }
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
@@ -13,7 +18,6 @@ pipeline {
                 }
             }
         }
-
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
