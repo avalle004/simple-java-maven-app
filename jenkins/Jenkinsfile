@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
           steps {
-                  sh 'mvn version'
+                  sh 'cd simple-java-maven-app && mvn clean package'
                 }            
         }
         stage('Test') {
